@@ -1,0 +1,32 @@
+language: emacs-lisp
+sudo: false
+
+matrix:
+  include:
+    # Emacs 26.x on Mojave (10.14)
+    - env:
+        - BUILD_OPTIONS=""
+        - TEST_OPTIONS=""
+      osx_image: xcode10.2
+    # Emacs 27.x on Mojave (10.14)
+    - env:
+        - BUILD_OPTIONS="--HEAD --with-cocoa --with-no-frame-refocus --with-imagemagick --with-jansson"
+        - TEST_OPTIONS="--HEAD"
+      osx_image: xcode10.2
+
+  fast_finish: true
+
+before_script:
+  - brew tap daviderestivo/emacs-head
+  - cd ~
+  - mv emacs-config .emacs.d
+  - cd .emacs.d
+  - git submodule init
+  - git submodule update
+  - git submodule foreach --recursive git checkout master
+  - cd ~
+
+script:
+  - echo "Attempting startup..."
+  - emacs -nw --eval="(kill-emacs)" && echo "Startup successful"
+
