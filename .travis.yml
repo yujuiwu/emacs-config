@@ -19,7 +19,7 @@ matrix:
   fast_finish: true
 
 before_script:
-  - cd ~ && ls -al
+  - cd .. && ls -al
   - mv daviderestivo/emacs-config .emacs.d
   - brew update
   - brew tap daviderestivo/emacs-head
