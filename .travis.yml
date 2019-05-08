@@ -20,12 +20,13 @@ matrix:
 
 before_script:
   - cd .. && ls -al
-  - mv emacs-config .emacs.d
+  - mv emacs-config ~/.emacs.d
   - brew update
   - brew tap daviderestivo/emacs-head
   - brew install emacs-head
 
 script:
   - echo "Attempting startup..."
-  - emacs -nw --eval="(kill-emacs)" && echo "Startup successful"
+  - emacs -nw --eval="(kill-emacs)"
+  - ls -al ~/.emacs.d/elpa
 
