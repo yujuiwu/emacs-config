@@ -20,7 +20,7 @@ matrix:
 
 before_script:
   - cd .. && ls -al
-  - mv daviderestivo/emacs-config .emacs.d
+  - mv emacs-config .emacs.d
   - brew update
   - brew tap daviderestivo/emacs-head
   - brew install emacs-head
